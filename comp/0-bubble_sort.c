@@ -27,12 +27,10 @@ void bubble_sort(int *array, size_t size)
 				}
 				printf("%d\n", array[k]);
 				swap_flag = 1;
-				printf("swap_flag set to %d\n", swap_flag);
 			}
 		}
 		if (swap_flag == 0)
 		{
-			printf("swap_flag = %d\n", swap_flag);
 			break;
 		}
 	}
