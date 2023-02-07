@@ -53,7 +53,10 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp, *j;
 
-	temp = *list;
+	if (list)
+		temp = *list;
+	else
+		exit(EXIT_FAILURE);
 	temp = temp->next;
 	while (temp)
 	{

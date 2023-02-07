@@ -59,8 +59,10 @@ void _swap(listint_t *temp, listint_t **list)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp, *j;
-
-	temp = *list;
+	if (list)
+		temp = *list;
+	else
+		exit(EXIT_FAILURE);
 	/* move temp to second element of list for easy comparison with (n-1) */
 	temp = temp->next;
 	printf("Data at temp: %d\n", temp->n);
