@@ -6,7 +6,7 @@
 */
 void insertion_sort_list(listint_t **list)
 {
-    int flag, j, i = 0, n = 0, comparator, to_be_compared;
+    int flag, i = 0, n = 0, comparator, to_be_compared;
     listint_t *x, *y, *z, *temp = *list;
 
     /* Determine number of nodes or n */
@@ -15,15 +15,15 @@ void insertion_sort_list(listint_t **list)
         temp = temp->next;
         n++;
     }
-    temp = *list;
+	temp = *list;
 
     /* Looping through the whole list of size (n) */
     for (i = 0; i < n; i ++)
     {
-        printf("======= FOR LOOP ====\n \n");
-        printf("Loop number [%d]\n",i);
-        comparator = temp->n;
-        printf("Compartor [%d]\n", comparator);
+        printf("======= FOR LOOP [%d] ====\n \n", i);
+		comparator = temp->n;
+		printf("Compartor [%d]\n", comparator);
+		
 		if (temp->next == NULL)
 		{
 			printf("Cant assign");
@@ -35,7 +35,7 @@ void insertion_sort_list(listint_t **list)
         printf("Comparing [%d] with [%d]\n", comparator, to_be_compared);
 
         /* Actual Comparison */
-        for (j = 0; j < n - 1; j ++)
+		while(temp)
         {
             printf("If [%d] < [%d]\n", to_be_compared, comparator);
             printf(" \n ===== Entering while =====\n \n");
@@ -52,9 +52,12 @@ void insertion_sort_list(listint_t **list)
                 printf("\nInitial list ==== \n");
                 print_list(*list);
                 printf("==== \n");
-                temp->next = y;
-				if (y != NULL)
-					y->prev = temp;
+				if (temp->next)
+				{
+					temp->next = y;
+					if (y != NULL)
+						y->prev = temp;
+				}
                 x->next = temp;
                 x->prev = z;
 				if (z != NULL)
@@ -67,11 +70,10 @@ void insertion_sort_list(listint_t **list)
             else
             {
                 printf("[%d] is not less than [%d]\n", to_be_compared, comparator);
+				temp = temp->next;
+				break;
             }
-
-        temp = temp->next;
-        printf("Broken from loop with flag [%d]\n", flag);
-        break;
+			printf("Broken from loop with flag [%d]\n", flag);
         }
     }
     printf("\n ==== End of For Loop \n \n");
